@@ -36,18 +36,17 @@ class AutoCompleteTrie {
       }
       currentNode = currentNode.children[char];
     }
-    if (currentNode.endOfWord) return currentNode.endOfWord;
+    return currentNode;
   }
 
-  _getRemainingTree(prefix) {
-    let currentNode = this.root;
-    for (let char of prefix) {
-      if (!currentNode.children[char]) {
-        return null;
-      }
-      currentNode = currentNode.children[char];
+  _allWordsHelper(prefix, node, allWords) {
+    if (node.endOfWord) {
+      allWords.push(prefix);
     }
-    return currentNode;
+
+    for (let child in node.children) {
+      this._allWordsHelper(prefix + child, node.children[child], allWords);
+    }
   }
 }
 
