@@ -23,10 +23,16 @@ class AutoCompleteTrie {
   }
 
   findWord(word) {
+    let targetNode = this._getRemainingTree(word);
+    if (!targetNode) return false;
+    return targetNode.endOfWord;
+  }
+
+  _getRemainingTree(prefix) {
     let currentNode = this.root;
-    for (let char of word) {
+    for (let char of prefix) {
       if (!currentNode.children[char]) {
-        return false;
+        return null;
       }
       currentNode = currentNode.children[char];
     }
@@ -43,5 +49,6 @@ class AutoCompleteTrie {
     }
     return currentNode;
   }
+}
 
 module.exports = AutoCompleteTrie;
