@@ -85,3 +85,37 @@ describe("AutoCompleteTrie - findWord", () => {
     expect(trie.findWord("app")).toBe(false);
   });
 });
+
+describe("AutoCompleteTrie - predictWords", () => {
+  let trie;
+
+  beforeEach(() => {
+    trie = new AutoCompleteTrie();
+    trie.addWord("cat");
+    trie.addWord("car");
+    trie.addWord("cart");
+    trie.addWord("dog");
+    trie.addWord("apple");
+  });
+
+  test("1. Should return all words matching a given prefix", () => {
+    const predictions = trie.predictWords("ca");
+
+    expect(predictions).toContain("cat");
+    expect(predictions).toContain("car");
+    expect(predictions).toContain("cart");
+
+    expect(predictions).not.toContain("dog");
+    expect(predictions.length).toBe(3);
+  });
+
+  test("2. Should return an empty array if the prefix does not exist", () => {
+    const predictions = trie.predictWords("xyz");
+    expect(predictions).toEqual([]);
+  });
+
+  test("3. Should return the word itself if the prefix is a complete word with no deeper children", () => {
+    const predictions = trie.predictWords("cart");
+    expect(predictions).toEqual(["cart"]);
+  });
+});
