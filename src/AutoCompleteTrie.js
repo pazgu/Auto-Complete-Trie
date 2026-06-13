@@ -32,6 +32,16 @@ class AutoCompleteTrie {
     }
     if (currentNode.endOfWord) return currentNode.endOfWord;
   }
-}
+
+  _getRemainingTree(prefix) {
+    let currentNode = this.root;
+    for (let char of prefix) {
+      if (!currentNode.children[char]) {
+        return null;
+      }
+      currentNode = currentNode.children[char];
+    }
+    return currentNode;
+  }
 
 module.exports = AutoCompleteTrie;
