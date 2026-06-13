@@ -86,6 +86,48 @@ describe("AutoCompleteTrie - findWord", () => {
   });
 });
 
+describe("AutoCompleteTrie - _getRemainingTree (Helper)", () => {
+  let trie;
+
+  beforeEach(() => {
+    trie = new AutoCompleteTrie();
+    trie.addWord("cat");
+  });
+
+  test("Should return the correct node for a valid prefix", () => {
+    const node = trie._getRemainingTree("ca");
+
+    expect(node).not.toBeNull();
+    expect(node.children["t"]).toBeDefined();
+  });
+
+  test("Should return null for a non-existent prefix", () => {
+    const node = trie._getRemainingTree("dog");
+    expect(node).toBeNull();
+  });
+});
+
+describe("AutoCompleteTrie - _allWordsHelper (Helper)", () => {
+  let trie;
+
+  beforeEach(() => {
+    trie = new AutoCompleteTrie();
+    trie.addWord("cat");
+    trie.addWord("car");
+  });
+
+  test("Should recursively collect all words from a given node into the array", () => {
+    const startingNode = trie._getRemainingTree("ca");
+    const resultArray = [];
+
+    trie._allWordsHelper("ca", startingNode, resultArray);
+
+    expect(resultArray).toContain("cat");
+    expect(resultArray).toContain("car");
+    expect(resultArray.length).toBe(2);
+  });
+});
+
 describe("AutoCompleteTrie - predictWords", () => {
   let trie;
 
