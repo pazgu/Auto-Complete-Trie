@@ -73,6 +73,23 @@ rl.on("line", (line) => {
       }
       break;
 
+    case "use":
+      if (!argument) {
+        console.log("✗ Error: Please provide a word to use.");
+      } else {
+        const newFreq = trie.useWord(argument);
+        if (newFreq !== null) {
+          console.log(
+            `✓ Incremented usage for '${argument}' (now ${newFreq})\n`,
+          );
+        } else {
+          console.log(
+            `✗ '${argument}' does not exist in dictionary. Add it first.\n`,
+          );
+        }
+      }
+      break;
+
     default:
       if (command) {
         console.log(
