@@ -59,3 +59,29 @@ describe("AutoCompleteTrie - addWord", () => {
     expect(Object.keys(trie.root.children).length).toBe(0);
   });
 });
+
+describe("AutoCompleteTrie - findWord", () => {
+  let trie;
+
+  beforeEach(() => {
+    trie = new AutoCompleteTrie();
+    trie.addWord("cat");
+    trie.addWord("car");
+    trie.addWord("apple");
+  });
+
+  test("1. Should return true for a word that exists", () => {
+    expect(trie.findWord("cat")).toBe(true);
+    expect(trie.findWord("apple")).toBe(true);
+  });
+
+  test("2. Should return false for a word that does not exist at all", () => {
+    expect(trie.findWord("dog")).toBe(false);
+    expect(trie.findWord("banana")).toBe(false);
+  });
+
+  test("3. Should return false for a prefix that is not a full word", () => {
+    expect(trie.findWord("ca")).toBe(false);
+    expect(trie.findWord("app")).toBe(false);
+  });
+});
