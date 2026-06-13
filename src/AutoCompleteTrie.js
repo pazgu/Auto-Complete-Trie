@@ -10,6 +10,17 @@ class AutoCompleteTrie {
   constructor() {
     this.root = new TrieNode("");
   }
+
+  addWord(word) {
+    let currentNode = this.root;
+    for (let char of word) {
+      if (!currentNode.children[char]) {
+        currentNode.children[char] = new TrieNode(char);
+      }
+      currentNode = currentNode.children[char];
+    }
+    currentNode.endOfWord = true;
+  }
 }
 
 module.exports = AutoCompleteTrie;

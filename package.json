@@ -1,0 +1,27 @@
+{
+  "name": "autocompletetrie",
+  "version": "1.0.0",
+  "description": "An interactive Command Line Interface (CLI) application that implements a custom **Trie (Prefix Tree)** data structure to provide fast, optimized auto-complete word suggestions.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pazgu/AutoCompleteTrie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pazgu/AutoCompleteTrie/issues"
+  },
+  "homepage": "https://github.com/pazgu/AutoCompleteTrie#readme",
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
+}
