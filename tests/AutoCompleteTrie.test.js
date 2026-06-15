@@ -1,4 +1,4 @@
-const AutoCompleteTrie = require("../src/AutoCompleteTrie");
+const AutoCompleteTrie = require("../src/shared/AutoCompleteTrie");
 describe("AutoCompleteTrie - addWord", () => {
   let trie;
 

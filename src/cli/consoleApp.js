@@ -1,4 +1,4 @@
-const AutoCompleteTrie = require("./AutoCompleteTrie");
+const AutoCompleteTrie = require("../shared/AutoCompleteTrie");
 const readline = require("readline");
 
 const trie = new AutoCompleteTrie();
