@@ -21,8 +21,22 @@ function renderSuggestions(predictions, currentPrefix) {
 
   predictions.forEach((predictionString) => {
     const word = predictionString.split(" ")[0];
+
+    const frequencyMatch = predictionString.match(/\s\(\d+\)$/);
+    const frequencyText = frequencyMatch ? frequencyMatch[0] : "";
+
     const li = document.createElement("li");
-    li.textContent = predictionString;
+    if (word.toLowerCase().startsWith(currentPrefix.toLowerCase())) {
+      const prefixLength = currentPrefix.length;
+      const highlightedPart = word.substring(0, prefixLength);
+      const remainingPart = word.substring(prefixLength);
+
+      // הרכבת ה-HTML עם תגית ה-span של המרקר
+      li.innerHTML = `<span class="highlight">${highlightedPart}</span>${remainingPart}${frequencyText}`;
+    } else {
+      // אם מכל סיבה שהיא זה לא מתחיל בזה, נציג כטקסט רגיל
+      li.textContent = predictionString;
+    }
 
     li.addEventListener("click", () => {
       searchInput.value = word;
