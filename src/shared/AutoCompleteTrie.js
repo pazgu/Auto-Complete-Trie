@@ -67,6 +67,12 @@ class AutoCompleteTrie {
 
     return null;
   }
+
+  getWordCount() {
+    let allWords = [];
+    this._allWordsHelper("", this.root, allWords);
+    return allWords.length;
+  }
 }
 
-module.exports = AutoCompleteTrie;
+export default AutoCompleteTrie;

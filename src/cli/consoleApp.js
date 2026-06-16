@@ -1,9 +1,9 @@
-const AutoCompleteTrie = require("../shared/AutoCompleteTrie");
-const readline = require("readline");
+import AutoCompleteTrie from "../shared/AutoCompleteTrie.js";
+import { createInterface } from "readline";
 
 const trie = new AutoCompleteTrie();
 
-const rl = readline.createInterface({
+const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
   prompt: "> ",

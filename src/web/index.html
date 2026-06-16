@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Complete Trie</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Auto Complete Trie</h1>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Type to insert..."
+          autocomplete="off"
+        />
+        <ul id="suggestions-list"></ul>
+      </div>
+
+      <hr />
+
+      <div class="container">
+        <div class="card add-word-box">
+          <div class="input-group">
+            <input
+              type="text"
+              id="new-word-input"
+              placeholder="Enter a word to add to dictionary"
+            />
+            <button id="add-word-btn">Add Word</button>
+          </div>
+        </div>
+
+        <div id="notification-banner" class="notification-banner">
+          ✓ Added '<span id="added-word-placeholder"></span>' to dictionary
+        </div>
+
+        <div class="card search-box">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Start typing to see suggestions..."
+            autocomplete="off"
+          />
+          <ul id="suggestions-list"></ul>
+        </div>
+
+        <div class="card counter-box">
+          <div id="word-count-number" class="count-number">0</div>
+          <div class="count-label">Words in Dictionary</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="webApp.js"></script>
+  </body>
+</html>
